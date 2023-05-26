@@ -1,7 +1,7 @@
 "use client"
 
 import { getRandom } from "@/app/(bookmark-page)/utils"
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import data from "./bookmark.data"
 import Bookmarks from "./bookmark.component"
 
@@ -9,9 +9,9 @@ const { daisyTheme, classNameOfPattern, pastelColorHexCode } = getRandom
 
 function Home() {
   const [style, updateStyle] = useState({
-    theme: daisyTheme(),
-    pattern: classNameOfPattern(),
-    patternColor: pastelColorHexCode(),
+    theme: "",
+    pattern: "",
+    patternColor: "",
   })
   const [searchString, setSearchString] = useState("")
   const searchInputRef = useRef<HTMLInputElement>(null)
@@ -37,10 +37,12 @@ function Home() {
     })
   }
 
+  useEffect(refreshStyle, [])
+
   return (
     <main className={"flex min-h-screen min-w-full justify-center flex-col items-center py-1 px-4 overflow-hidden"} data-theme={style.theme}>
       <Bookmarks.bg pattern={style.pattern} color={style.patternColor} />
-      <header className="min-w-full top-0 fixed flex justify-center items-center gap-2 p-2 z-10 backdrop-blur-md shadow md:justify-normal">
+      <header className="min-w-full top-0 fixed flex justify-center items-center gap-2 p-2 z-10 backdrop-blur-md shadow sm:justify-normal">
         <Bookmarks.counts count={data.length} />
         <Bookmarks.refreshStyle onClick={refreshStyle} />
         {/* <Bookmarks.searchBox onChange={search} /> */}
@@ -54,7 +56,7 @@ function Home() {
       <span className="p-4 opacity-0"></span>
       {/* <main className="flex max-w-full flex-col sm:justify-center sm:flex-wrap sm:flex-row gap-4 px-3 mt-8 overflow-scroll"> */}
       <main className=" grid w-full max-w-full gap-4 px-3 mt-8" style={{
-        gridTemplateColumns: "repeat(auto-fit, minmax(300PX, 1fr))"
+        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))"
       }}>
         {
           data.map(bookmark => {
