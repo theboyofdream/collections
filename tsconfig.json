@@ -29,7 +29,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".trash/temp.ts",
-    "app/api/bookmarks/route.js"
+    "app/api/bookmarks/route.ts"
   ],
   "exclude": ["node_modules", ".trash/temp.ts", ".trash"]
 }

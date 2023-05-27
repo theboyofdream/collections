@@ -191,19 +191,24 @@
         </a>
       </footer> */}
 
-  // const [bookmarkCards, addBookmarkCards] = useState<{ [key: string]: React.JSX.Element }>({})
+// const [bookmarkCards, addBookmarkCards] = useState<{ [key: string]: React.JSX.Element }>({})
 
- // fill elements from bookmarks
-    // let cards: { [key: string]: React.JSX.Element } = {}
-    // data.map(bookmark => {
-    //   const _key = `${bookmark.title}${bookmark.labels.join("")}`
-    //   // const str = `${bookmark.title} ${bookmark.labels.join(" ")}`.trim().toLowerCase()
-    //   const condition = searchString === "" ? true : _key.trim().toLowerCase().indexOf(searchString) !== -1
-    //   cards[_key] = <Bookmarks.card key={_key} data={bookmark} visible={condition} />
-    // })
-    // addBookmarkCards({ ...cards })
+// fill elements from bookmarks
+// let cards: { [key: string]: React.JSX.Element } = {}
+// data.map(bookmark => {
+//   const _key = `${bookmark.title}${bookmark.labels.join("")}`
+//   // const str = `${bookmark.title} ${bookmark.labels.join(" ")}`.trim().toLowerCase()
+//   const condition = searchString === "" ? true : _key.trim().toLowerCase().indexOf(searchString) !== -1
+//   cards[_key] = <Bookmarks.card key={_key} data={bookmark} visible={condition} />
+// })
+// addBookmarkCards({ ...cards })
 
 // const bookmarkCards: { [key: string]: React.JSX.Element } = {}
 // data.map(bookmark => {
 //   bookmarkCards[`${bookmark.title}${bookmark.labels.join("")}`] = <Bookmarks.card key={`${bookmark.title}${bookmark.labels.join("")}`} data={bookmark} />
 // })
+
+// const dataQuery = fetch("https://drive.google.com/uc?export=download&id=1U1JO065GuvkrQnFTclsYIlWGolmcXkCn", { redirect: "follow", method: 'GET', })
+const uri = "https://drive.google.com/uc?export=download&id=1U1JO065GuvkrQnFTclsYIlWGolmcXkCn"
+const requestOptions: RequestInit = { method: 'GET', headers: new Headers(), redirect: "follow" }
+// const dataQuery = fetch(uri, requestOptions)
