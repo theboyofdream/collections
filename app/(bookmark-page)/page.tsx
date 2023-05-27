@@ -1,13 +1,28 @@
 "use client"
 
 import { getRandom } from "@/app/(bookmark-page)/utils"
-import React, { useEffect, useRef, useState } from "react"
-import data from "./bookmark.data"
+import React, { use, useEffect, useRef, useState } from "react"
+// import data from "./bookmark.data"
 import Bookmarks from "./bookmark.component"
+import axios from "axios"
 
+type bookmark = {
+  title: string,
+  date: number,
+  icon: string | null,
+  link: string,
+  labels: string[]
+}
 const { daisyTheme, classNameOfPattern, pastelColorHexCode } = getRandom
+// const dataQuery = fetch("https://drive.google.com/uc?export=download&id=1U1JO065GuvkrQnFTclsYIlWGolmcXkCn", { redirect: "follow", method: 'GET', })
+const uri = "https://drive.google.com/uc?export=download&id=1U1JO065GuvkrQnFTclsYIlWGolmcXkCn"
 
 function Home() {
+  // const [data, updateData] = useState<bookmark[]>([])
+  const dataQuery = axios.get("/api/bookmarks")//uri)
+  const xdata = use(dataQuery)
+  console.log(xdata)
+  const data: bookmark[] = []
   const [style, updateStyle] = useState({
     theme: "",
     pattern: "",
@@ -37,7 +52,16 @@ function Home() {
     })
   }
 
-  useEffect(refreshStyle, [])
+  useEffect(() => {
+    refreshStyle()
+
+    // const query = () => fetch("/api/bookmarks", { redirect: "follow", method: 'GET', })
+    //   .then(response => response.json())
+    //   .then(bookmarkData => updateData(bookmarkData))
+
+    // query()
+
+  }, [])
 
   return (
     <main className={"flex min-h-screen min-w-full justify-center flex-col items-center py-1 px-4 overflow-hidden"} data-theme={style.theme}>
