@@ -16,13 +16,15 @@ type bookmark = {
 const { daisyTheme, classNameOfPattern, pastelColorHexCode } = getRandom
 // const dataQuery = fetch("https://drive.google.com/uc?export=download&id=1U1JO065GuvkrQnFTclsYIlWGolmcXkCn", { redirect: "follow", method: 'GET', })
 const uri = "https://drive.google.com/uc?export=download&id=1U1JO065GuvkrQnFTclsYIlWGolmcXkCn"
+const requestOptions: RequestInit = { method: 'GET', headers: new Headers(), redirect: "follow" }
+// const dataQuery = fetch(uri, requestOptions)
 
-function Home() {
-  // const [data, updateData] = useState<bookmark[]>([])
-  const dataQuery = axios.get("/api/bookmarks")//uri)
-  const xdata = use(dataQuery)
-  console.log(xdata)
-  const data: bookmark[] = []
+export default function Home() {
+  const [data, updateData] = useState<bookmark[]>([])
+  // const dataQuery = axios.get("/api/bookmarks")//uri)
+  // const xdata = use(dataQuery)
+  // console.log(xdata)
+  // const data: bookmark[] = []
   const [style, updateStyle] = useState({
     theme: "",
     pattern: "",
@@ -55,11 +57,13 @@ function Home() {
   useEffect(() => {
     refreshStyle()
 
-    // const query = () => fetch("/api/bookmarks", { redirect: "follow", method: 'GET', })
-    //   .then(response => response.json())
-    //   .then(bookmarkData => updateData(bookmarkData))
+    const query = () => fetch("/api/bookmarks", { redirect: "follow", method: 'GET', })
+      // const query = () => fetch(uri, requestOptions)
+      .then(response => response.json())
+      .then(bookmarkData => updateData(bookmarkData))
+    // .then(bookmarkData => console.log(bookmarkData))
 
-    // query()
+    query()
 
   }, [])
 
@@ -105,6 +109,13 @@ function Home() {
   )
 }
 
-export default Home
-
-
+// export const getServerSideProps = async () => {
+//   const query = await fetch(uri, requestOptions)
+//   const response = query.json()
+//   console.log(response)
+//   return {
+//     props: {
+//       data: response
+//     }
+//   }
+// }

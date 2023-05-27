@@ -23,6 +23,13 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".trash/temp.ts"],
-  "exclude": ["node_modules", ".trash/temp.ts",".trash"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".trash/temp.ts",
+    "app/api/bookmarks/route.js"
+  ],
+  "exclude": ["node_modules", ".trash/temp.ts", ".trash"]
 }
