@@ -73,7 +73,8 @@ export default function Home() {
           <Bookmarks.refreshStyle onClick={refreshStyle} />
           <Bookmarks.counts count={data.length} />
         </span>
-        <Bookmarks.searchBox onChange={search} ref={searchInputRef} />
+        <input className="shadow border border-primary input w-auto h-auto max-w-xs p-1 px-2 text-sm" type="search" name="search-input" id="search-input" placeholder="Search here..." onChange={search} ref={searchInputRef} />
+        {/* <Bookmarks.searchBox onChange={search} ref={searchInputRef} /> */}
       </header>
 
       <span className="p-4 opacity-0"></span>

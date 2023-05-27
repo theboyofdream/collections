@@ -47,7 +47,7 @@ const Bookmarks = {
             <span className="hidden sm:block">&nbsp;bookmark</span>
         </a>
     },
-    searchBox: ({ onChange, ref }: { onChange: () => void, ref: RefObject<HTMLInputElement> }) => <input className="shadow border border-primary input w-auto h-auto max-w-xs p-1 px-2 text-sm" type="search" name="search-input" id="search-input" placeholder="Search here..." onChange={onChange} ref={ref} />,
+    // searchBox: ({ onChange, ref }: { onChange: () => void, ref: RefObject<HTMLInputElement> }) => <input className="shadow border border-primary input w-auto h-auto max-w-xs p-1 px-2 text-sm" type="search" name="search-input" id="search-input" placeholder="Search here..." onChange={onChange} ref={ref} />,
     card: ({ visible = true, data }: bookmark_props) => {
         const color = pastelColorHexCode()
         return (
